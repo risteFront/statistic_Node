@@ -1,13 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
+
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="styles.css" />
+	<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+	<script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.12/xlsx.core.min.js"></script>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="table.js"></script>
+	<script type="text/javascript" src="smartTable.debug.js"></script>
+	<script type="text/javascript" src="pageSelect.js">
+	</script>
 </head>
-<body>
-	<form id="uploadForm" enctype="multipart/form-data" method="post">
-		<input type="file" name="userFile" />
-		<input type="submit" value="Upload File" name="submit">
-	</form>
+
+<body ng-app="myApp" ng-controller="mainCtrl">
+
+	<div ui-view>
+		<form id="uploadForm" enctype="multipart/form-data" method="post" action='/'>
+			<thead>
+				<rt>
+					<th>
+						<<input class="btn btn-primary" type="file" name="userFile" /></th>
+					<th><button class="btn btn-primary ovde" type="submit" value="Upload File" ng-click="uploadCsv()" name="submit" id="submit"/>Upload
+						</button>
+						<%= title %>
+							<loading></loading>
+					</th>
+				</rt>
+			</thead>
+
+			<!-- <a href="{{jsonUrl}}" download="download.json">download</a> -->
+		</form>
+		<button ng-click="saveFile()">Save XLSX file</button>
+		<button ng-click="saveFile2()">Save XLSX file</button>
+	</div>
+	<!-- <table id="example" class="display" width="100%"></table> -->
+	<!-- <table st-table="displayed" class="table table-striped">
+<thead>
+	<tr>
+		<th st-ratio="20" st-sort="ulCounter">ulCounter</th>
+		<th st-ratio="20" st-sort="timestamp">timestamp</th>
+		<th st-ratio="10" st-sort="fcnt">fcnt</th>
+		<th st-ratio="30" st-sort="deui">deui</th>
+		<th st-ratio="20" st-sort="gw">gw</th>
+		<th st-ratio="20" st-sort="ftime">gw</th>
+		<th st-ratio="20" st-sort="balance">gw</th>
+		<th st-ratio="20" st-sort="balance">gw</th>
+
+		<th st-ratio="20" st-sort="balance">gw</th>
+
+	</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="row in displayed">
+		<td st-ratio="20">{{row.ulCounter}}</td>
+		<td st-ratio="20">{{row.timestamp }}</td>
+		<td st-ratio="10">{{row.fcnt}}</td>
+		<td st-ratio="30">{{row.deui}}</td>
+		<td st-ratio="20">{{row.gw}}</td>
+	</tr>
+</tbody>
+<tfoot>
+	<tr>
+	<td colspan="5" class="text-center">
+		<div st-items-by-page="10" st-pagination="" st-template="pagination.custom.html"></div>
+	</td>
+</tr>
+</tfoot>
+</table> -->
+
 </body>
+
 </html>
